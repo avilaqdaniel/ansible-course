@@ -1,0 +1,26 @@
+# version: '3.8'
+# version is obsolete
+
+services:
+
+  ansible-target1:
+    image: mmumshad/ubuntu-ssh-enabled:latest
+    container_name: ansible-target1
+    networks:
+      - mynetwork
+
+  ansible-target2:
+    image: mmumshad/ubuntu-ssh-enabled:latest
+    container_name: ansible-target2
+    networks:
+      - mynetwork
+
+  ansible-target3:
+    image: mmumshad/ubuntu-ssh-enabled:latest
+    container_name: ansible-target3
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
