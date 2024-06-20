@@ -4,23 +4,35 @@
 services:
 
   ansible-target1:
-    image: mmumshad/ubuntu-ssh-enabled:latest
+    image: avilaqdaniel/ubuntu2204-ssh:0.0.2
     container_name: ansible-target1
+    ports:
+      - "2221:22"
     networks:
-      - mynetwork
+      mynetwork:
+        ipv4_address: 172.20.0.2
 
   ansible-target2:
-    image: mmumshad/ubuntu-ssh-enabled:latest
+    image: avilaqdaniel/ubuntu2204-ssh:0.0.2
     container_name: ansible-target2
+    ports:
+      - "2222:22"
     networks:
-      - mynetwork
+      mynetwork:
+        ipv4_address: 172.20.0.3
 
   ansible-target3:
-    image: mmumshad/ubuntu-ssh-enabled:latest
+    image: avilaqdaniel/ubuntu2204-ssh:0.0.2
     container_name: ansible-target3
+    ports:
+      - "2223:22"
     networks:
-      - mynetwork
+      mynetwork:
+        ipv4_address: 172.20.0.4
 
 networks:
   mynetwork:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
